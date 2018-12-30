@@ -27,9 +27,10 @@ func TestAddressUnmarshalText(t *testing.T) {
 		{"D1.E2.F3", Address{0xD1, 0xE2, 0xF3}, false},
 		{"a1b2c3", Address{0xA1, 0xB2, 0xC3}, false},
 		{"D1E2F3", Address{0xD1, 0xE2, 0xF3}, false},
-		{"abcd", Address{}, true},
-		{"abcdefg", Address{}, true},
-		{"01b.02.03", Address{}, true},
+		{"abcd", Address{}, true},      // too short
+		{"abcdefg", Address{}, true},   // too long
+		{"01b.02.03", Address{}, true}, // too long
+		{"01.02.ZZ", Address{}, true},  // not hex
 	}
 
 	for i, test := range tests {
