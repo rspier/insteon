@@ -45,7 +45,8 @@ func (i2 *I2Device) RemoveLinks(oldLinks ...*LinkRecord) error {
 func (i2 *I2Device) Links() (links []*LinkRecord, err error) {
 	Log.Debugf("Retrieving Device link database")
 	lastAddress := MemAddress(0)
-	buf, _ := (&LinkRequest{Type: ReadLink, NumRecords: 0}).MarshalBinary()
+	//	buf, _ := (&LinkRequest{Type: ReadLink, NumRecords: 1, MemAddress: BaseLinkDBAddress}).MarshalBinary()
+	buf, _ := (&LinkRequest{Type: ReadLink}).MarshalBinary()
 	recvCh, err := i2.SendCommandAndListen(CmdReadWriteALDB, buf)
 
 	for response := range recvCh {

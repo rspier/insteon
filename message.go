@@ -73,14 +73,14 @@ func (m MessageType) Broadcast() bool {
 
 // Flags for common message types
 const (
-	StandardBroadcast        = Flags(0x8a)
-	StandardAllLinkBroadcast = Flags(0xca)
-	StandardDirectMessage    = Flags(0x0a)
-	StandardDirectAck        = Flags(0x2a)
-	StandardDirectNak        = Flags(0xaa)
-	ExtendedDirectMessage    = Flags(0x1a)
-	ExtendedDirectAck        = Flags(0x3a)
-	ExtendedDirectNak        = Flags(0xba)
+	StandardBroadcast        = Flags(0x8f)
+	StandardAllLinkBroadcast = Flags(0xcf)
+	StandardDirectMessage    = Flags(0x0f)
+	StandardDirectAck        = Flags(0x2f)
+	StandardDirectNak        = Flags(0xaf)
+	ExtendedDirectMessage    = Flags(0x1f)
+	ExtendedDirectAck        = Flags(0x3f)
+	ExtendedDirectNak        = Flags(0xbf)
 )
 
 // Flags is the flags byte in an insteon message

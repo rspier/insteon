@@ -95,6 +95,7 @@ func run(args []string, next cli.NextFunc) error {
 	c := &serial.Config{
 		Name: serialPortFlag,
 		Baud: 19200,
+		//ReadTimeout: time.Second * 30,
 	}
 
 	s, err := serial.OpenPort(c)

@@ -24,7 +24,7 @@ import (
 )
 
 const (
-	writeDelay = 500 * time.Millisecond
+	writeDelay = 650 * time.Millisecond
 )
 
 var (
