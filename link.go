@@ -70,6 +70,12 @@ func (rcf RecordControlFlags) String() string {
 	return str
 }
 
+// MarshalText converts a RecordControlFlags into its string
+// representation.  See UnmarshalText for details.
+func (rcf RecordControlFlags) MarshalText() ([]byte, error) {
+	return []byte(rcf.String()), nil
+}
+
 // UnmarshalText takes a two character input string and converts it
 // to the correct RecordControlFlags.  The first character can be
 // either "A" for available or "U" for unavailable (in use) and the
@@ -104,6 +110,12 @@ type Group byte
 // String representation of the group number
 func (g Group) String() string { return sprintf("%d", byte(g)) }
 
+// MarshalText converst a Group to a text representation.  It's the
+// reverse of UnmarshalText.
+func (g *Group) MarshalText() ([]byte, error) {
+	return []byte(g.String()), nil
+}
+
 // UnmarshalText takes an input string and converts
 // it to its Group equivalent.  The decimal input value
 // must be positive and less than 256
@@ -113,7 +125,7 @@ func (g *Group) UnmarshalText(text []byte) error {
 		if 0 < value && value < 256 {
 			*g = Group(byte(value))
 		} else {
-			err = fmt.Errorf("valid groups are between 1 and 255 (inclusive)")
+			err = fmt.Errorf("valid groups are between 1 and 255 (inclusive). %q is not valid.", value)
 		}
 	} else {
 		err = fmt.Errorf("invalid number format")
